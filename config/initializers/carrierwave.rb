@@ -2,9 +2,9 @@ CarrierWave.configure do |config|
   if Rails.env.production?
     config.fog_credentials = {
       provider:              'AWS', # required
-      aws_access_key_id:     Rails.application.secrets.aws_access_key_id, # required
-      aws_secret_access_key: Rails.application.secrets.aws_secret_access_key, # required
-      region:                'us-east-1', # optional, defaults to 'us-east-1'
+      aws_access_key_id:     Rails.application.secrets.s3_access_key_id, # required
+      aws_secret_access_key: Rails.application.secrets.s3_secret_access_key, # required
+      region:                'eu-central-1', # optional, defaults to 'us-east-1'
     }
     config.fog_directory  = 'videogamesrate' # required
     config.fog_public     = true # optional, defaults to true
