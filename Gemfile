@@ -63,3 +63,5 @@ gem 'faker'
 gem 'populator'
 gem 'auto_html', '~>1.6.4'
 gem 'sanitize'
+
+gem 'activeadmin', github: 'activeadmin'
