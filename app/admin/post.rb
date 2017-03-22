@@ -31,7 +31,7 @@ ActiveAdmin.register Post do
   filter :updated_at
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs "Post Details" do
       f.input :content
       f.input :attachment
     end
