@@ -4,7 +4,6 @@ ActiveAdmin.register Post do
 
   index do
     selectable_column
-    id_column
     column :user
     column :created_at
     column :updated_at
@@ -21,6 +20,10 @@ ActiveAdmin.register Post do
       end
     end
     active_admin_comments
+  end
+
+  action_item :view, only: :show do
+    link_to 'View on site', post_path(post)
   end
 
   filter :user
