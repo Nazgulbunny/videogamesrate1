@@ -33,6 +33,11 @@ gem 'sanitize'
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'sidekiq'
+gem 'sidetiq', github: 'sfroehler/sidetiq', branch: 'celluloid-0-17-compatibility'
+gem 'pubnub',  github: 'pubnub/ruby', branch: 'celluloid'
+gem 'sinatra', :require => nil
+
 group :development do
   gem 'spring'
   gem 'better_errors'
