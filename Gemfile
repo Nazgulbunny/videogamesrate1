@@ -38,6 +38,8 @@ gem 'sidetiq', github: 'sfroehler/sidetiq', branch: 'celluloid-0-17-compatibilit
 gem 'pubnub',  github: 'pubnub/ruby', branch: 'celluloid'
 gem 'sinatra', :require => nil
 
+gem "celluloid", git: "https://github.com/celluloid/celluloid", submodules: true
+
 group :development do
   gem 'spring'
   gem 'better_errors'
