@@ -18,7 +18,7 @@ class Video < ActiveRecord::Base
 	validates_attachment_content_type :ogg_file, content_type: /.*/
 
 	# Validate presence of the video file
-	valites_attachment_presence :video_file
+	validates_attachment_presence :video_file
 
 	# Publish video to make it available
 	def publish!
