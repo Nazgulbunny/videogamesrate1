@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'dotenv', '~> 2.1', '>= 2.1.1', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0.0'
@@ -40,7 +40,7 @@ gem 'sinatra', :require => nil
 gem 'paperclip'
 gem 'simple_form'
 
-gem "celluloid", git: "https://github.com/celluloid/celluloid", submodules: true
+# gem "celluloid", git: "https://github.com/celluloid/celluloid", submodules: true
 
 group :development do
   gem 'spring'
