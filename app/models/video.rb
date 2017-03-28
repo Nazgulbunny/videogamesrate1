@@ -1,4 +1,6 @@
 class Video < ActiveRecord::Base
+	after_create :run_encoders
+
 	# Association declaration
   belongs_to :user
 
@@ -45,4 +47,13 @@ class Video < ActiveRecord::Base
 	def all_formats_encoded?
 		self.webm_file.path && self.mp4_file.path && self.ogg_file.path ? true : false
 	end
+
+	private
+
+		def run_encoders
+		  ThumbnailCutter.perform_async(self.id)
+		  Mp4VideoEncoder.perform_async(self.id)
+		  OgvVideoEncoder.perform_async(self.id)
+		  WebmVideoEncoder.perform_async(self.id)
+		end
 end
