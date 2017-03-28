@@ -38,6 +38,7 @@ gem 'sidetiq', github: 'sfroehler/sidetiq', branch: 'celluloid-0-17-compatibilit
 gem 'pubnub',  github: 'pubnub/ruby', branch: 'celluloid'
 gem 'sinatra', :require => nil
 gem 'paperclip'
+gem 'simple_form'
 
 gem "celluloid", git: "https://github.com/celluloid/celluloid", submodules: true
 
