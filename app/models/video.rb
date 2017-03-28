@@ -22,19 +22,23 @@ class Video < ActiveRecord::Base
 
 	# Publish video to make it available
 	def publish!
-		self.published = true
-		save
+	  self.published = true
+	  save
+	  $pubnub.publish(channel: "video.#{id}", message: {event: :published}, http_sync: true)
+	  $pubnub.publish(channel: self.user.notification_channel, message: {event: :published, scope: :videos, id: self.id, name: name.truncate(20)}, http_sync: true)
 	end
 
 	# Increment / decrease likes counter
 	def like!
-		self.likes += 1
-		save
+	  self.likes += 1
+	  save
+	  $pubnub.publish(channel: "video.#{id}", message: {event: :liked}, http_sync: true)
 	end
 
 	def dislike!
-		self.likes -= 1
-		save
+	  self.likes -= 1
+	  save
+	  $pubnub.publish(channel: "video.#{id}", message: {event: :disliked}, http_sync: true)
 	end
 
 	# Check if formats are encoded
