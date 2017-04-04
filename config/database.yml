@@ -9,20 +9,20 @@ default: &default
   pool: 5
   timeout: 5000
   host: localhost
-  username: <%= ENV["DATABASE_USERNAME"] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
+  username: deploying
+  password: postgres
 
 development:
   <<: *default
-  database: video_games_rate_development_db
+  database: vgr_development_db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: video_games_rate_test_db
+  database: vgr_test_db
 
 production:
   <<: *default
-  database: video_games_rate_prod_db
+  database: vgr_production_db
