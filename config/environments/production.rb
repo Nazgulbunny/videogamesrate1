@@ -77,8 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'http://172.104.135.35' }
-
   # Paperclip defaults
   config.paperclip_defaults = {
     :storage => :s3,
@@ -90,16 +88,18 @@ Rails.application.configure do
   }
 
   # SMTP Settings
+  config.action_mailer.default_url_options = { host: 'http://172.104.135.35' }
+
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => 'smtp.sendgrid.net',
+    :address              => 'smtp-relay.sendinblue.com',
     :port                 => '587',
     :domain               => '172.104.135.35',
     :user_name            => ENV['SMTP_USERNAME'],
     :password             => ENV['SMTP_PASSWORD'],
-    :authentication       => "plain",
+    :authentication       => "login",
     :enable_starttls_auto => true
   }
 
