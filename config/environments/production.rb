@@ -97,8 +97,8 @@ Rails.application.configure do
     :address              => 'smtp-relay.sendinblue.com',
     :port                 => '587',
     :domain               => '172.104.135.35',
-    :user_name            => ENV['SMTP_USERNAME'],
-    :password             => ENV['SMTP_PASSWORD'],
+    :user_name            => Rails.application.secrets.smtp_user,
+    :password             => Rails.application.secrets.smtp_pass,
     :authentication       => "login",
     :enable_starttls_auto => true
   }
