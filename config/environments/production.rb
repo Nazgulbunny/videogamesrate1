@@ -90,16 +90,18 @@ Rails.application.configure do
   # SMTP Settings
   config.action_mailer.default_url_options = { host: 'http://172.104.135.35' }
 
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
 
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
     :address              => 'smtp-relay.sendinblue.com',
     :port                 => 587,
     :domain               => '172.104.135.35',
     :user_name            => Rails.application.secrets.smtp_user,
     :password             => Rails.application.secrets.smtp_pass,
-    :authentication       => :login,
+    :authentication       => 'login',
     :enable_starttls_auto => true
   }
 
