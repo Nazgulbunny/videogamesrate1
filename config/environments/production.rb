@@ -94,7 +94,7 @@ Rails.application.configure do
   ActionMailer::Base.perform_deliveries = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => 'mail.hover.com',
+    :address              => 'smtp.sendgrid.net',
     :port                 => '587',
     :domain               => '172.104.135.35',
     :user_name            => ENV['SMTP_USERNAME'],
