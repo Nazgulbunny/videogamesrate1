@@ -77,7 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'http://videogamesrate.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'http://172.104.135.35' }
 
   # Paperclip defaults
   config.paperclip_defaults = {
@@ -96,7 +96,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => 'mail.hover.com',
     :port                 => '587',
-    :domain               => 'videogamesrate.com',
+    :domain               => '172.104.135.35',
     :user_name            => ENV['SMTP_USERNAME'],
     :password             => ENV['SMTP_PASSWORD'],
     :authentication       => "plain",
