@@ -95,11 +95,11 @@ Rails.application.configure do
 
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp-relay.sendinblue.com',
-    :port                 => '587',
+    :port                 => 587,
     :domain               => '172.104.135.35',
     :user_name            => Rails.application.secrets.smtp_user,
     :password             => Rails.application.secrets.smtp_pass,
-    :authentication       => "login",
+    :authentication       => :login,
     :enable_starttls_auto => true
   }
 

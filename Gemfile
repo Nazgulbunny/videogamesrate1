@@ -41,6 +41,7 @@ gem 'paperclip'
 gem 'simple_form'
 
 gem 'puma'
+gem 'sendinblue'
 
 group :development do
   gem 'spring'
