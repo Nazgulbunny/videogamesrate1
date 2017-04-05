@@ -94,11 +94,11 @@ Rails.application.configure do
   ActionMailer::Base.perform_deliveries = true
 
   ActionMailer::Base.smtp_settings = {
-    :address              => 'smtp.sendgrid.net',
+    :address              => 'mail.hover.com',
     :port                 => '587',
-    :domain               => 'heroku.com',
-    :user_name            => ENV['SENDGRID_USERNAME'],
-    :password             => ENV['SENDGRID_PASSWORD'],
+    :domain               => 'videogamesrate.com',
+    :user_name            => ENV['SMTP_USERNAME'],
+    :password             => ENV['SMTP_PASSWORD'],
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
