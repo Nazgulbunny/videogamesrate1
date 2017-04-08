@@ -16,6 +16,7 @@ gem 'font-awesome-rails'
 
 gem 'devise'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'friendly_id', '~> 5.0'
 
 gem 'will_paginate', '~> 3.1.0'
