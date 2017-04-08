@@ -43,6 +43,7 @@ gem 'simple_form'
 
 gem 'puma'
 gem 'sendinblue'
+gem 'file_validators'
 
 group :development do
   gem 'spring'
