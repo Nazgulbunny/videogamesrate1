@@ -1,17 +1,10 @@
 class AvatarUploader < CarrierWave::Uploader::Base
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
 
-  storage :fog if Rails.env.production?
-
-  # Choose what kind of storage to use for this uploader:
-  storage :file if Rails.env.development?
-  # storage :fog
-
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  version :standard do
+    process :eager => true
+    process :resize_to_fill => [110, 110]
+    process :convert => 'jpg'
+    cloudinary_transformation :quality => 80
   end
 end
