@@ -44,3 +44,4 @@ bower.json
 
 .env
 *.log
+/shared
