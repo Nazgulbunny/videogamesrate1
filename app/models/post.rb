@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
 
   default_scope -> { order('created_at DESC') }
 
-  mount_uploader :attachment, AvatarUploader
+  mount_uploader :attachment, PostUploader
 
   validates_presence_of :content
   validates_presence_of :user

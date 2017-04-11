@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	has_many :videos
 
   mount_uploader :avatar, AvatarUploader
-  mount_uploader :cover, AvatarUploader
+  mount_uploader :cover, CoverUploader
 
   validates_presence_of :name
 

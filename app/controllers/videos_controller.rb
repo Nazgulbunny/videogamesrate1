@@ -1,41 +1,33 @@
 class VideosController < ApplicationController
+  before_action :set_user
 	before_action :authenticate_user!
-	before_action :set_video, only: [:show, :edit, :like, :dislike]
-
-	def index
-		@videos = Video.where(published: true)
-	end
+	before_action :set_video, only: [:show, :destroy, ]
 
 	def new
 		@video = Video.new
 	end
 
-	def edit
-	end
-
 	def create
-		@video = Video.new(video_params)
+		@video = current_user.videos.new(video_params)
 
-		respond_to do |format|
-			if @video.save
-				format.html { redirect_to @video, notice: 'Video was successfully created.' }
-				format.json { render :show, status: :created, location: @video }
-			else
-				format.html { render :new }
-				format.json { render json: @video.errors, status: :unprocessable_entity }
-			end
-		end
+		if @video.save
+      redirect_to root_path
+    else
+      redirect_to root_path, notice: @video.errors.full_messages.first
+    end
 	end
 
- # Likes video, increment likes count
- def like
-	 @video.like!
- end
+	def show
+		@comments = @video.comments
+	end
 
- # Dislikes video, increment likes count
- def dislike
-	 @video.dislike!
- end
+	def destroy
+    @video.destroy
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
+  end
 
  private
 	 def set_video
@@ -43,6 +35,10 @@ class VideosController < ApplicationController
 	 end
 
 	 def video_params
-		 params.require(:video).permit(:video_file, :title, :description)
+		 params.require(:video).permit(:attachment, :description)
+	 end
+
+	 def set_user
+		 @user = current_user
 	 end
 end
