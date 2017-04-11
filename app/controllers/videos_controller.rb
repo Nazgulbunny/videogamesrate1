@@ -14,7 +14,7 @@ class VideosController < ApplicationController
 	end
 
 	def create
-		@video = Video.new(video_params)
+		@video = current_user.videos.new(video_params)
 
 		respond_to do |format|
 			if @video.save
