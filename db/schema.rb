@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328153038) do
+ActiveRecord::Schema.define(version: 20170411112723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20170328153038) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "activities", force: :cascade do |t|
-    t.string   "trackable_type"
     t.integer  "trackable_id"
-    t.string   "owner_type"
+    t.string   "trackable_type"
     t.integer  "owner_id"
+    t.string   "owner_type"
     t.string   "key"
     t.text     "parameters"
-    t.string   "recipient_type"
     t.integer  "recipient_id"
+    t.string   "recipient_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,17 +66,11 @@ ActiveRecord::Schema.define(version: 20170328153038) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string   "title",            limit: 50, default: ""
     t.text     "comment"
-    t.string   "commentable_type"
     t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.integer  "user_id"
     t.string   "role",                        default: "comments"
     t.datetime "created_at"
@@ -103,10 +97,10 @@ ActiveRecord::Schema.define(version: 20170328153038) do
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "follows", force: :cascade do |t|
-    t.string   "followable_type",                 null: false
     t.integer  "followable_id",                   null: false
-    t.string   "follower_type",                   null: false
+    t.string   "followable_type",                 null: false
     t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
     t.boolean  "blocked",         default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -177,43 +171,11 @@ ActiveRecord::Schema.define(version: 20170328153038) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
-  create_table "videos", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "video_file_file_name"
-    t.string   "video_file_content_type"
-    t.integer  "video_file_file_size"
-    t.datetime "video_file_updated_at"
-    t.string   "mp4_file_file_name"
-    t.string   "mp4_file_content_type"
-    t.integer  "mp4_file_file_size"
-    t.datetime "mp4_file_updated_at"
-    t.string   "webm_file_file_name"
-    t.string   "webm_file_content_type"
-    t.integer  "webm_file_file_size"
-    t.datetime "webm_file_updated_at"
-    t.string   "ogg_file_file_name"
-    t.string   "ogg_file_content_type"
-    t.integer  "ogg_file_file_size"
-    t.datetime "ogg_file_updated_at"
-    t.string   "thumbnail_file_name"
-    t.string   "thumbnail_content_type"
-    t.integer  "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-    t.boolean  "published"
-    t.integer  "likes",                   default: 0
-    t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
-
   create_table "votes", force: :cascade do |t|
-    t.string   "votable_type"
     t.integer  "votable_id"
-    t.string   "voter_type"
+    t.string   "votable_type"
     t.integer  "voter_id"
+    t.string   "voter_type"
     t.boolean  "vote_flag"
     t.string   "vote_scope"
     t.integer  "vote_weight"
@@ -224,5 +186,4 @@ ActiveRecord::Schema.define(version: 20170328153038) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
-  add_foreign_key "videos", "users"
 end
