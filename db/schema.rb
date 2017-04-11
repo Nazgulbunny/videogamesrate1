@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411114636) do
+ActiveRecord::Schema.define(version: 20170411161408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,8 +177,10 @@ ActiveRecord::Schema.define(version: 20170411114636) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cached_votes_up", default: 0
   end
 
+  add_index "videos", ["cached_votes_up"], name: "index_videos_on_cached_votes_up", using: :btree
   add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
 
   create_table "votes", force: :cascade do |t|
