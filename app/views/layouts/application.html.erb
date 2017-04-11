@@ -6,6 +6,9 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Plyr Video Player -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/2.0.12/plyr.css">
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -24,5 +27,9 @@
     <div class="container">
       <%= yield %>
     </div>
+
+    <!-- Plyr Video Player -->
+    <script src="https://cdn.plyr.io/2.0.12/plyr.js"></script>
+    <script>plyr.setup();</script>
   </body>
 </html>
