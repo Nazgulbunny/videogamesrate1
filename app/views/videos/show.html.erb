@@ -1,14 +1,18 @@
-<div class="container">
-  <div class="row video-full" data-video-id="<%= @video.id %>">
-    <div class="col-md-10">
-      <h1>
-        <%= @video.description %>
-      </h1>
-      <p class="small">
-        <%= link_to 'Back to videos' ,videos_path %>
-      </p>
-
-        <%= cl_video_tag(@video.attachment.url) %>
+<div id="video-<%= @video.id %>" class="video">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 well">
+      <%= render @video, remote: false %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 well">
+      <h4>Comments</h4>
+      <hr>
+      <%= render 'comments/form', commentable: @video %>
+      <br>
+      <div class="comments">
+        <%= render(@comments) || render('shared/no_resource', resources: 'Comments') %>
+      </div>
     </div>
   </div>
 </div>
