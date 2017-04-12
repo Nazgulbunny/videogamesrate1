@@ -6,7 +6,8 @@
       <span class="action">liked a <%= link_to 'video', activity.trackable %></span>
     </div>
     <div class="content">
-      <h4><small><%= activity.trackable.content %></small></h4>
+      <h4><%= activity.trackable.description %></h4>
+      <%= cl_video_tag(activity.trackable.attachment.url) %>
     </div>
     <%= render 'shared/created_at', activity: activity %>
   </div>
