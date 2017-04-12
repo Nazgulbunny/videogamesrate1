@@ -1,4 +1,3 @@
-require 'sidekiq/web'
 Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -16,11 +15,7 @@ Rails.application.routes.draw do
   end
   resources :events, except: [:edit, :update]
 
-	# To be updated
 	resources :videos
-	get '/videos/:id/like' => 'videos#like'
-	get '/videos/:id/dislike' => 'videos#dislike'
-	# ./
 
   authenticated :user do
     root to: 'home#index', as: 'home'
@@ -35,6 +30,4 @@ Rails.application.routes.draw do
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
   match :find_friends, to: 'home#find_friends', as: :find_friends, via: :get
   match :about, to: 'home#about', as: :about, via: :get
-
-	mount Sidekiq::Web => '/sidekiq'
 end
