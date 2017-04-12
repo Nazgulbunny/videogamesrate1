@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412171245) do
+ActiveRecord::Schema.define(version: 20170412174417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 20170412171245) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "avg",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "title",            limit: 50, default: ""
@@ -122,6 +131,14 @@ ActiveRecord::Schema.define(version: 20170412171245) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "overall_averages", force: :cascade do |t|
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "overall_avg",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "content",                     null: false
     t.integer  "user_id"
@@ -136,6 +153,31 @@ ActiveRecord::Schema.define(version: 20170412171245) do
   add_index "posts", ["cached_votes_up"], name: "index_posts_on_cached_votes_up", using: :btree
   add_index "posts", ["comments_count"], name: "index_posts_on_comments_count", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.float    "stars",         null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.integer  "cacheable_id"
+    t.string   "cacheable_type"
+    t.float    "avg",            null: false
+    t.integer  "qty",            null: false
+    t.string   "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",     null: false
