@@ -31,13 +31,13 @@ class UsersController < ApplicationController
   end
 
   def mentionable
-    render json: @user.following_users.as_json(only: [:id, :name]), root: false
+    render json: @user.following_users.as_json(only: [:id, :username]), root: false
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :about, :avatar, :cover,
+    params.require(:user).permit(:username, :about, :avatar, :cover,
                                  :sex, :dob, :location, :phone_number)
   end
 

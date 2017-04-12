@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, CoverUploader
 
-  validates_presence_of :name
+  validates_presence_of :username
 
   self.per_page = 10
 
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :username, use: [:slugged, :finders]
 end

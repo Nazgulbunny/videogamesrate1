@@ -1,6 +1,6 @@
 <div class="info">
   <%= render 'shared/avatar', user: video.user %>
-  <h4 class="name"><%= link_to video.user.name, user_path(video.user) %></h4>
+  <h4 class="name"><%= link_to video.user.username, user_path(video.user) %></h4>
   <span class="action">created an <%= link_to 'video', video %></span>
 </div>
 <div class="content">
