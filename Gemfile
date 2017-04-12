@@ -37,7 +37,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'puma'
 gem 'sendinblue'
 gem 'file_validators'
-gem "figaro"
+gem 'figaro'
 
 group :development do
   gem 'spring'
@@ -67,9 +67,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'unicorn'
   gem 'rails_12factor'
-  gem 'fog'
-  gem 'fog-aws'
 	gem 'aws-sdk', '~> 2.3.0'
 end
