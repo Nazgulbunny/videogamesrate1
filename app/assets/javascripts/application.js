@@ -16,6 +16,8 @@
 //= require bootstrap
 //= require bindWithDelay
 //= require jquery.datetimepicker
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
 
 $(document).ready(function(){
