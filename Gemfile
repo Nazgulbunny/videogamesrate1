@@ -38,6 +38,7 @@ gem 'puma'
 gem 'sendinblue'
 gem 'file_validators'
 gem 'figaro'
+gem 'ratyrate'
 
 group :development do
   gem 'spring'
