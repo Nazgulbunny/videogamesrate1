@@ -45,3 +45,6 @@ bower.json
 .env
 *.log
 /shared
+
+# Ignore application configuration
+/config/application.yml
