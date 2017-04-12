@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     member do
-      get :friends
+      get :friends, :path => "teammates"
       get :followers
       get :deactivate
       get :mentionable
@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   match :unfollow, to: 'follows#destroy', as: :unfollow, via: :post
   match :like, to: 'likes#create', as: :like, via: :post
   match :unlike, to: 'likes#destroy', as: :unlike, via: :post
-  match :find_friends, to: 'home#find_friends', as: :find_friends, via: :get
+  match :find_friends, to: 'home#find_friends', as: :find_friends, via: :get, :path => "find_teammates"
   match :about, to: 'home#about', as: :about, via: :get
 end
