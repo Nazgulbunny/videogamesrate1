@@ -7,7 +7,7 @@
     </div>
     <div class="followee">
       <%= render 'shared/avatar', user: activity.trackable.followable %>
-      <h4 class="name"><%= link_to activity.trackable.followable.name, user_path(activity.trackable.followable) %></h4>
+      <h4 class="name"><%= link_to activity.trackable.followable.username, user_path(activity.trackable.followable) %></h4>
     </div>
     <%= render 'shared/created_at', activity: activity %>
   </div>
