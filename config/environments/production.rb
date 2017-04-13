@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # SMTP Settings
-  config.action_mailer.default_url_options = { host: 'http://172.104.135.35' }
+  config.action_mailer.default_url_options = { host: 'http://172.104.143.116' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -88,7 +88,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => 'smtp-relay.sendinblue.com',
     :port                 => 587,
-    :domain               => '172.104.135.35',
+    :domain               => '172.104.143.116',
     :user_name            => Rails.application.secrets.smtp_user,
     :password             => Rails.application.secrets.smtp_pass,
     :authentication       => 'login',
