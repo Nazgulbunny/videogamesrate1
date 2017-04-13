@@ -2,6 +2,11 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 
+# Load ENV vars via Figaro
+require 'figaro'
+Figaro.application = Figaro::Application.new(environment: 'production', path: File.expand_path('../config/application.yml', __FILE__))
+Figaro.load
+
 require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
