@@ -1,5 +1,5 @@
 # Change these
-server '172.104.135.35', roles: [:web, :app, :db], primary: true
+server Figaro.env.PRODUCTION_SERVER_IP, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@bitbucket.org:JavaScriptTeddy/videogamesrate.git'
 set :application,     'videogamesrate'
