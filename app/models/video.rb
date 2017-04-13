@@ -7,5 +7,5 @@ class Video < ActiveRecord::Base
   include PublicActivity::Model
   tracked only: [:create, :like], owner: Proc.new{ |controller, model| model.user }
 
-	mount_uploader :attachment, PostUploader
+	mount_uploader :attachment, VideoUploader
 end
