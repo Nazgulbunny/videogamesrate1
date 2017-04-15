@@ -38,4 +38,152 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # Navigation
+  config.included_models = ['User', 'Post', 'Event', 'Video', 'Game']
+
+  # Users
+  config.model 'User' do
+    list do
+      field :username
+      field :email
+      field :about
+      field :avatar
+      field :cover
+    end
+
+    show do
+      field :username
+      field :email
+      field :about
+      field :avatar
+      field :cover
+      field :sex
+      field :slug
+
+      field :posts
+      field :events
+      field :videos
+
+      field :sign_in_count
+      field :current_sign_in_ip
+      field :last_sign_in_ip
+      field :confirmed_at
+    end
+
+    edit do
+      field :username
+      field :email
+      field :about
+      field :avatar
+      field :cover
+      field :slug
+    end
+  end
+
+  # Posts
+  config.model 'Post' do
+    list do
+      field :user
+      field :content
+      field :attachment
+      field :created_at
+      field :cached_votes_up
+      field :comments_count
+    end
+
+    show do
+      field :user
+      field :content
+      field :attachment
+      field :created_at
+      field :cached_votes_up
+      field :comments_count
+    end
+
+    edit do
+      field :content
+      field :attachment
+    end
+  end
+
+  # Events
+  config.model 'Event' do
+    list do
+      field :user
+      field :name
+      field :when
+      field :created_at
+      field :cached_votes_up
+      field :comments_count
+    end
+
+    show do
+      field :user
+      field :name
+      field :when
+      field :cached_votes_up
+      field :comments_count
+    end
+
+    edit do
+      field :name
+      field :when
+    end
+  end
+
+  # Videos
+  config.model 'Video' do
+    list do
+      field :user
+      field :description
+      field :attachment
+      field :created_at
+      field :cached_votes_up
+      field :comments_count
+    end
+
+    show do
+      field :user
+      field :description
+      field :attachment
+      field :cached_votes_up
+      field :comments_count
+    end
+
+    edit do
+      field :description
+      field :attachment
+    end
+  end
+
+  # Games
+  config.model 'Game' do
+    list do
+      field :title
+      field :developer
+      field :publisher
+      field :release_date
+    end
+
+    show do
+      field :title
+      field :developer
+      field :publisher
+      field :platform
+      field :release_date
+      field :logo
+      field :cover
+    end
+
+    edit do
+      field :title
+      field :developer
+      field :publisher
+      field :platform
+      field :release_date
+      field :logo
+      field :cover
+    end
+  end
 end
