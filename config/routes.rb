@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   resources :games
   post '/rate' => 'rater#create', :as => 'rate'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  
   resources :posts
   resources :comments, only: [:create, :destroy]
   devise_for :users
