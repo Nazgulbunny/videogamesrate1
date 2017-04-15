@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :games
-  post '/rate' => 'rater#create', :as => 'rate'
+  # Devise
+  devise_for :users
 
+  # Resources
+  resources :events, except: [:edit, :update]
+  resources :videos
   resources :posts
   resources :comments, only: [:create, :destroy]
-  devise_for :users
+  resources :games
   resources :users do
     member do
       get :friends, :path => "teammates"
@@ -14,13 +17,15 @@ Rails.application.routes.draw do
       get :mentionable
     end
   end
-  resources :events, except: [:edit, :update]
 
-	resources :videos
+  # Ratings
+  post '/rate' => 'rater#create', :as => 'rate'
+
 
   authenticated :user do
     root to: 'home#index', as: 'home'
   end
+
   unauthenticated :user do
     root 'home#front'
   end
