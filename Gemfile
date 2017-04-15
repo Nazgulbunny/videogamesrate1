@@ -32,7 +32,7 @@ gem 'populator'
 gem 'auto_html', '~>1.6.4'
 gem 'sanitize'
 
-gem 'activeadmin', github: 'activeadmin'
+gem 'rails_admin', '~> 1.1.1'
 
 gem 'puma'
 gem 'sendinblue'
