@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :games
   post '/rate' => 'rater#create', :as => 'rate'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
