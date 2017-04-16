@@ -1,0 +1,9 @@
+<br>
+<div id="game-<%= game.id %>" class="row">
+  <div class="col-lg-8">
+    <%= image_tag game.logo_url(:standard) || 'avatar.jpg', class: 'avatar' %>
+    <h5 class="name"><%= link_to game.title, game %></h5>
+    <br>
+  </div>
+</div>
+<br>
