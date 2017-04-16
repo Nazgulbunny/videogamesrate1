@@ -1,0 +1,7 @@
+<div class="cover" style="background-image: url(<%= @game.cover.url(:standard) %>);"></div>
+<br>
+<div id="user-<%= @user.id %>" class="row">
+  <div class="col-lg-3">
+    <%= render 'shared/game_info' %>
+  </div>
+</div>

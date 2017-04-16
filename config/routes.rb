@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # Devise
+  devise_for :users
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  
+  # Resources
+  resources :events, except: [:edit, :update]
+  resources :videos
   resources :posts
   resources :comments, only: [:create, :destroy]
-  devise_for :users
+  resources :games
   resources :users do
     member do
       get :friends, :path => "teammates"
@@ -16,13 +18,15 @@ Rails.application.routes.draw do
       get :mentionable
     end
   end
-  resources :events, except: [:edit, :update]
 
-	resources :videos
+  # Ratings
+  post '/rate' => 'rater#create', :as => 'rate'
+
 
   authenticated :user do
     root to: 'home#index', as: 'home'
   end
+
   unauthenticated :user do
     root 'home#front'
   end
