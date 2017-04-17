@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   acts_as_voter
   acts_as_follower
   acts_as_followable
-  
+
   ratyrate_rater
   ratyrate_rateable "player"
 
@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :events
 	has_many :videos
+  has_many :reviews, dependent: :destroy # If a user is deleted, all it's reviews will also be deleted
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, CoverUploader
