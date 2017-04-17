@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :reviews
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # Devise
   devise_for :users
@@ -10,7 +9,9 @@ Rails.application.routes.draw do
   resources :videos
   resources :posts
   resources :comments, only: [:create, :destroy]
-  resources :games
+  resources :games do
+    resources :reviews, except: [:show, :index]
+  end
   resources :users do
     member do
       get :friends, :path => "teammates"
