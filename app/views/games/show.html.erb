@@ -1,7 +1,44 @@
 <div class="cover" style="background-image: url(<%= @game.cover.url(:standard) %>);"></div>
 <br>
-<div id="user-<%= @user.id %>" class="row">
+<div id="game-<%= @game.id %>" class="row">
   <div class="col-lg-3">
     <%= render 'shared/game_info' %>
   </div>
+  <div class="col-lg-6">
+    <div class="well">
+      <h1>Reviews</h1>
+      <hr>
+
+      <% if @reviews.present? %>
+        <% @reviews.each do |review| %>
+          <div class="well">
+            <div class="star-rating" data-score=<%= review.rating %> >
+
+            </div>
+            <p><%= review.comment %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <h3>Sorry, there are no reviews... :( </h3>
+        <p>Why don't you write one? <%= link_to 'Write the first review!', new_game_review_path(@game) %></p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="well">
+      <ul class="nav nav-pills nav-stacked">
+        <li><%= link_to 'Write Review', new_game_review_path(@game) %></li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
