@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /reviews
   def index
     @reviews = Review.all
@@ -21,7 +22,7 @@ class ReviewsController < ApplicationController
 
   # POST /reviews
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.new(review_params)
 
     if @review.save
       redirect_to @review, notice: 'Review was successfully created.'
