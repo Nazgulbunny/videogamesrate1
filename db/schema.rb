@@ -194,10 +194,11 @@ ActiveRecord::Schema.define(version: 20170417172118) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.text     "comment"
+    t.string   "video_review"
     t.integer  "user_id"
     t.integer  "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "reviews", ["game_id"], name: "index_reviews_on_game_id", using: :btree
