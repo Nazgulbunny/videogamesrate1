@@ -175,6 +175,8 @@ RailsAdmin.config do |config|
       field :developer
       field :publisher
       field :platform
+      field :webpage
+      field :genre
       field :release_date
       field :logo
       field :cover
@@ -185,6 +187,8 @@ RailsAdmin.config do |config|
       field :developer
       field :publisher
       field :platform
+      field :webpage
+      field :genre
       field :release_date
       field :logo
       field :cover

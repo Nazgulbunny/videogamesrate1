@@ -19,5 +19,6 @@ class Game < ActiveRecord::Base
   validates_presence_of :logo
   validates_presence_of :cover
   validates_presence_of :platform
-  
+  validates_presence_of :genre
+
 end
