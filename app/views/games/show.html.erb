@@ -17,7 +17,7 @@
             <% if review.video_review.present? %>
               <%= cl_video_tag(review.video_review.url) %>
             <% end %>
-            <%= link_to "Read More", game_review_path(review, @game)%>
+            <%= link_to "Read More", game_review_path(@game, review)%>
           </div>
         <% end %>
       <% else %>

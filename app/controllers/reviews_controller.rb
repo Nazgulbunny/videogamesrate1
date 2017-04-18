@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @comments = @review.comments.all
   end
 
   # PATCH/PUT /reviews/1
