@@ -24,6 +24,9 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   # PATCH/PUT /reviews/1
   def update
     if @review.update(review_params)
