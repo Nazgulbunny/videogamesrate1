@@ -4,7 +4,9 @@
 
   <span class="text"><%= review.comment %></span>
 
-  <%= cl_video_tag(review.video_review.url) %>
+  <% if review.video_review.present? %>
+    <%= cl_video_tag(review.video_review.url) %>
+  <% end %>
 
   <div class="points">
     <div class="pull-right">
