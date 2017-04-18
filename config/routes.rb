@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments, only: [:create, :destroy]
   resources :games do
-    resources :reviews, except: [:show, :index]
+    resources :reviews, except: [:index]
   end
   resources :users do
     member do

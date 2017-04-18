@@ -1,0 +1,23 @@
+<div class="content">
+  <h3>Review for <%= review.game.title %></h3>
+  <h6>By: <%= review.user.username %></h6>
+
+  <span class="text"><%= review.comment %></span>
+
+  <% if review.video_review.present? %>
+    <%= cl_video_tag(review.video_review.url) %>
+  <% end %>
+
+  <div class="points">
+    <div class="pull-right">
+      <% if belongs_to_user?(review) %>
+        <%= link_to edit_game_review_path(review, @game), class: 'btn btn-primary btn-sm' do %>
+          <% fa_icon 'pencil' %>
+        <% end %>
+        <%= link_to game_review_path(review, @game), method: :delete, class:'btn btn-danger btn-sm', remote: remote do %>
+          <% fa_icon 'trash' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

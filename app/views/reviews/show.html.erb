@@ -1,0 +1,18 @@
+<div id="review-<%= @review.id %>" class="review">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 well">
+      <%= render @review, remote: false %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 well">
+      <h4>Comments</h4>
+      <hr>
+      <%= render 'comments/form', commentable: @review %>
+      <br>
+      <div class="comments">
+        <%= render(@comments) || render('shared/no_resource', resources: 'Comments') %>
+      </div>
+    </div>
+  </div>
+</div>

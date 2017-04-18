@@ -8,4 +8,9 @@ class Video < ActiveRecord::Base
   tracked only: [:create, :like], owner: Proc.new{ |controller, model| model.user }
 
 	mount_uploader :attachment, VideoUploader
+
+  # Validations
+  validates_presence_of :description
+  validates_presence_of :attachment
+  validates_presence_of :user
 end

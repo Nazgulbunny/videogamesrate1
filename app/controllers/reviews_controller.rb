@@ -24,6 +24,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    @comments = @review.comments.all
+  end
+
   # PATCH/PUT /reviews/1
   def update
     if @review.update(review_params)
@@ -51,6 +55,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.require(:review).permit(:rating, :comment)
+      params.require(:review).permit(:rating, :comment, :video_review)
     end
 end

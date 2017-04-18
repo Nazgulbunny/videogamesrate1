@@ -1,16 +1,22 @@
 <div id="user-info" class="well">
   <div class="text-center">
     <%= image_tag @game.logo_url(:standard) || 'avatar.jpg', class: 'avatar' %>
-    <h5><%= link_to @game.title, @game %></h5>
+    <% if @game.webpage.present? %>
+      <h5><%= link_to "Official Website", @game.webpage, target: '_blank' %></h5>
+    <% end %>
   </div>
   <h5>
     Developer: <%= @game.developer %>
   </h5>
+
   <h5>
     Publisher: <%= @game.publisher %>
   </h5>
   <h5>
     Platform: <%= @game.platform %>
+  </h5>
+  <h5>
+    Genre: <%= @game.genre %>
   </h5>
   <h5>
     Release Date: <%= @game.release_date.strftime("%m/%d/%Y") %>
