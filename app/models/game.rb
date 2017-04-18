@@ -11,4 +11,13 @@ class Game < ActiveRecord::Base
   acts_as_commentable
   ratyrate_rateable "game"
 
+  # validation
+  validates_presence_of :title
+  validates_presence_of :release_date
+  validates_presence_of :developer
+  validates_presence_of :publisher
+  validates_presence_of :logo
+  validates_presence_of :cover
+  validates_presence_of :platform
+  
 end
