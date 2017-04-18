@@ -14,10 +14,17 @@
   <div class="field">
     <div id="star-rating"></div>
   </div>
+  <br>
   <div class="field">
     <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
+    <%= f.text_area :comment, cols: '50', rows: '10' %>
   </div>
+  <br>
+  <div class="field">
+    <%= f.label :video_review %><br>
+    <%= f.file_field :video_review %>
+  </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

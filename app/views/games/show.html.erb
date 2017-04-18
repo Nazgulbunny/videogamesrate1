@@ -12,10 +12,11 @@
       <% if @reviews.present? %>
         <% @reviews.each do |review| %>
           <div class="well">
-            <div class="star-rating" data-score=<%= review.rating %> >
-
-            </div>
+            <div class="star-rating" data-score=<%= review.rating %> ></div>
             <p><%= review.comment %></p>
+            <% if review.video_review.present? %>
+              <%= cl_video_tag(review.video_review.url) %>
+            <% end %>
           </div>
         <% end %>
       <% else %>
