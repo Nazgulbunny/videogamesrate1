@@ -40,6 +40,9 @@ gem 'file_validators'
 gem 'figaro'
 gem 'ratyrate'
 
+# Might not be needed
+gem 'erubis', '~> 2.7'
+
 group :development do
   gem 'spring'
   gem 'better_errors'
