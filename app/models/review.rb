@@ -1,4 +1,4 @@
-class Review < ActiveRecord::Base
+class Review < ApplicationRecord
   # References
   belongs_to :user
   belongs_to :game
@@ -12,5 +12,5 @@ class Review < ActiveRecord::Base
   validates_presence_of :comment
   validates_presence_of :user
   validates_presence_of :game
-  
+
 end
