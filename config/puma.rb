@@ -27,3 +27,6 @@ on_worker_boot do
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
 end
+
+# Allow puma to be restarted by `rails restart` command.
+plugin :tmp_restart
