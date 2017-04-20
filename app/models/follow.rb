@@ -1,4 +1,4 @@
-class Follow < ActiveRecord::Base
+class Follow < ApplicationRecord
   include Shared::Callbacks
 
   extend ActsAsFollower::FollowerLib

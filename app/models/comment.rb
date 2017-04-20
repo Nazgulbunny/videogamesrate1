@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   include Shared::Callbacks
   include ActsAsCommentable::Comment
   include Mention

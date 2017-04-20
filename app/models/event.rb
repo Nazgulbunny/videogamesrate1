@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   include Shared::Callbacks
   belongs_to :user
   acts_as_votable
