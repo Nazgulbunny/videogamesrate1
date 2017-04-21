@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   resources :videos
   resources :posts
   resources :comments, only: [:create, :destroy]
+
   resources :games do
     resources :reviews, except: [:index]
   end
+
   resources :users do
     member do
       get :friends, :path => "teammates"
@@ -22,6 +24,8 @@ Rails.application.routes.draw do
       get :mentionable
     end
   end
+
+  resources :conversations, only: [:create]
 
   # Ratings
   post '/rate' => 'rater#create', :as => 'rate'
