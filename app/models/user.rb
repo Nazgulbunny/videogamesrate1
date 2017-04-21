@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :events
 	has_many :videos
   has_many :reviews, dependent: :destroy # If a user is deleted, all it's reviews will also be deleted
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
 
   mount_uploader :avatar, AvatarUploader
   mount_uploader :cover, CoverUploader
