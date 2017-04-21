@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/chat', to: 'chat#index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # Devise
   devise_for :users
