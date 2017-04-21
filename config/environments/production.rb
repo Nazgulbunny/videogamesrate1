@@ -43,6 +43,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.allowed_request_origins = ["http://172.104.143.116"]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -113,4 +114,5 @@ Rails.application.configure do
       "http://videogamesratedev.s3-aws-eu-central-1.amazonaws.com" # A bit of a hack to only search for images
     end
   }
+
 end
