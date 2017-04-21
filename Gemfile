@@ -39,6 +39,7 @@ gem 'sendinblue'
 gem 'file_validators'
 gem 'figaro'
 gem 'ratyrate'
+gem 'redis-rails'
 
 # Might not be needed
 gem 'erubis', '~> 2.7'
