@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/chat', to: 'chat#index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # Devise
   devise_for :users
@@ -9,15 +11,23 @@ Rails.application.routes.draw do
   resources :videos
   resources :posts
   resources :comments, only: [:create, :destroy]
+
   resources :games do
     resources :reviews, except: [:index]
   end
+
   resources :users do
     member do
       get :friends, :path => "teammates"
       get :followers
       get :deactivate
       get :mentionable
+    end
+  end
+
+  resources :conversations, only: [:create] do
+    member do
+      post :close
     end
   end
 
