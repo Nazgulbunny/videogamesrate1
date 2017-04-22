@@ -46,6 +46,7 @@ Rails.application.configure do
   config.action_cable.url = 'ws://172.104.143.116/cable' # ws:// is non-secure, wss:// is secure
   config.action_cable.allowed_request_origins = [ 'http://172.104.143.116' ]
 
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
