@@ -110,11 +110,4 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = Proc.new { |source|
-    if source =~ /\b(.png|.jpg)\b/i
-      "http://videogamesratedev.s3-aws-eu-central-1.amazonaws.com" # A bit of a hack to only search for images
-    end
-  }
-
 end
