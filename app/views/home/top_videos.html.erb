@@ -74,6 +74,7 @@
         <section>
           <div class="container">
             <div class="row text-center">
+              <% if @videos.present? %>
                 <% @videos.each do |video| %>
                   <div class="col-md-4 col-sm-4 hero-feature">
                       <div class="thumbnail">
@@ -87,6 +88,7 @@
                       </div>
                   </div>
                 <% end %>
+              <% end %>
             </div>
           </div>
         </section>
