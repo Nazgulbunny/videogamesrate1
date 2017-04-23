@@ -18,6 +18,11 @@ class HomeController < ApplicationController
     @users =  User.where.not(id: @friends.unshift(@user)).paginate(page: params[:page])
   end
 
+  def top_videos
+    @videos = Video.order( "cached_votes_up DESC" )
+    render :layout => false
+  end
+
   private
   def set_user
     @user = current_user

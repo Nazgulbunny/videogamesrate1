@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   get '/chat', to: 'chat#index'
+  get '/top_videos', to: 'home#top_videos'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount ActionCable.server => "/cable"
-  
+
   # Devise
   devise_for :users
 
