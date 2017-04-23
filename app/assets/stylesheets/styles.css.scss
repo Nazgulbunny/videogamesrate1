@@ -80,6 +80,17 @@ h6 {
 
 .btn-primary {
   background-color: $navbar-color;
+  border: $navbar-color;
+}
+
+.btn-primary:hover {
+  background-color: $navbar-color;
+  border: $navbar-color;
+}
+
+.btn-primary:active {
+  background-color: $navbar-color;
+  border: $navbar-color;
 }
 
 .btn-sm {
