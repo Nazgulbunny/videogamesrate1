@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   end
 
   def front
+    @videos= Video.order( "cached_votes_up DESC" ).limit(3).all
     render :layout => false
   end
 

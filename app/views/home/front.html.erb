@@ -7,6 +7,9 @@
       <%= javascript_include_tag 'application' %>
       <%= csrf_meta_tags %>
 
+      <!-- Plyr Video Player -->
+      <link rel="stylesheet" href="https://cdn.plyr.io/2.0.12/plyr.css">
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
@@ -90,6 +93,37 @@
             </div>
         </section>
 
+        <hr>
+
+        <% if @videos.present? %>
+          <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Weekly Top</h3>
+                    <h6>
+                      <a href="#">More Gameplay Videos</a>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="row text-center">
+              <% @videos.each do |video| %>
+                <div class="col-md-4 col-sm-4 hero-feature">
+                    <div class="thumbnail">
+                        <%= cl_video_tag(video.attachment.url, width: 800, height: 400, style: "display:block; max-width: 100%; height: 100%;") %>
+                        <div class="caption">
+                          <em>By: <%= video.user.username %></em>
+                          <p>
+                              <%= link_to "See More", video_path(video) %>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
         <!-- Footer -->
         <footer class="py-5 bg-inverse">
             <div class="container">
@@ -97,6 +131,10 @@
             </div>
             <!-- /.container -->
         </footer>
+
+        <!-- Plyr Video Player -->
+        <script src="https://cdn.plyr.io/2.0.12/plyr.js"></script>
+        <script>plyr.setup();</script>
 
     </body>
 </html>
