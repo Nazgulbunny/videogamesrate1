@@ -9,7 +9,7 @@ class CreateRates < ActiveRecord::Migration[5.1]
         t.timestamps
       end
 
-      add_index :rates, :rater_id
+      # add_index :rates, :rater_id
       add_index :rates, [:rateable_id, :rateable_type]
     end
 
