@@ -31,6 +31,7 @@
                             <%= link_to 'See Event', event_path(event), class: "search-link" %>
                         </div>
                       <% end %>
+
                       <br>
                     <% end %>
 
@@ -48,6 +49,7 @@
                           <%= link_to 'See Profile', user_path(user), class: "search-link" %>
                         </div>
                       <% end %>
+
                       <br>
                     <% end %>
 
@@ -65,6 +67,25 @@
                           <%= link_to 'See Game', game_path(game), class: "search-link" %>
                         </div>
                       <% end %>
+
+                      <br>
+                    <% end %>
+
+                    <% if @videos.present? %>
+                      <br>
+
+                      <h2>
+                        Results found for videos
+                      </h2>
+                      <% @videos.each do |video| %>
+                        <div class="hr-line-dashed"></div>
+                        <div class="search-result">
+                          <%= cl_video_tag(video.attachment.url, width: 400, height: 800) %>
+                          <h4>Description: <%= video.description %></h4>
+                          <%= link_to 'See video', video_path(video), class: "search-link" %>
+                        </div>
+                      <% end %>
+
                       <br>
                     <% end %>
 
