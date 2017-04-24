@@ -13,4 +13,9 @@ class Video < ApplicationRecord
   validates_presence_of :description
   validates_presence_of :attachment
   validates_presence_of :user
+
+  # Search
+  def self.search(search)
+    where("description LIKE ?", "%#{search}%")
+  end
 end

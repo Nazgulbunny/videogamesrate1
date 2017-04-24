@@ -10,4 +10,9 @@ class Event < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :when
   validates_presence_of :user
+
+  # Search
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
 end
