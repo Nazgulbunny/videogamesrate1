@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  
+  get '/search', to: 'search#index'
   get '/chat', to: 'chat#index'
   get '/top_videos', to: 'home#top_videos'
 
