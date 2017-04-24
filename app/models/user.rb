@@ -29,4 +29,9 @@ class User < ApplicationRecord
 
   extend FriendlyId
   friendly_id :username, use: [:slugged, :finders]
+
+  # Search
+  def self.search(search)
+    where("username LIKE ?", "%#{search}%")
+  end
 end
