@@ -9,7 +9,7 @@ Figaro.load
 
 require 'capistrano/rails'
 require 'capistrano/bundler'
-require 'capistrano/rbenv'
+require 'capistrano/rvm'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma # Fix "Don't know how to build task 'start'" error
 # Configure rbenv
