@@ -31,12 +31,12 @@
                             <%= link_to 'See Event', event_path(event), class: "search-link" %>
                         </div>
                       <% end %>
+                      <br>
                     <% end %>
 
                     <% if @users.present? %>
                       <br>
-                      <br>
-                      
+
                       <h2>
                         Results found for users
                       </h2>
@@ -48,6 +48,24 @@
                           <%= link_to 'See Profile', user_path(user), class: "search-link" %>
                         </div>
                       <% end %>
+                      <br>
+                    <% end %>
+
+                    <% if @games.present? %>
+                      <br>
+
+                      <h2>
+                        Results found for games
+                      </h2>
+                      <% @games.each do |game| %>
+                        <div class="hr-line-dashed"></div>
+                        <div class="search-result">
+                          <%= image_tag game.logo_url(:standard) || 'avatar.jpg', class: 'avatar' %>
+                          <h4>Title: <%= game.title %></h4>
+                          <%= link_to 'See Game', game_path(game), class: "search-link" %>
+                        </div>
+                      <% end %>
+                      <br>
                     <% end %>
 
                 </div>

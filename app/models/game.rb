@@ -21,4 +21,13 @@ class Game < ApplicationRecord
   validates_presence_of :platform
   validates_presence_of :genre
 
+  # Search
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+    where("developer LIKE ?", "%#{search}%")
+    where("publisher LIKE ?", "%#{search}%")
+    where("platform LIKE ?", "%#{search}%")
+    where("genre LIKE ?", "%#{search}%")
+  end
+
 end
