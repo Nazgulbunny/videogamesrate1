@@ -24,5 +24,4 @@ test:
   database: vgr__test_db
 
 production:
-  <<: *default
-  database: vgr__production_db
+  url: <%= ENV["PGSQL_URL"] %>
