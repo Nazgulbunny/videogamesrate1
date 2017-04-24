@@ -1,4 +1,4 @@
-class RedoVideosTable < ActiveRecord::Migration
+class RedoVideosTable < ActiveRecord::Migration[5.1]
   def change
     create_table :videos do |t|
       t.text :description
