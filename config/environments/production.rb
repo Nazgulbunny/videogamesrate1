@@ -43,9 +43,8 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-  config.action_cable.url = 'ws://172.104.143.116/cable' # ws:// is non-secure, wss:// is secure
-  config.action_cable.allowed_request_origins = [ 'http://172.104.143.116' ]
-
+  config.action_cable.url = 'ws://172.104.144.98/cable' # ws:// is non-secure, wss:// is secure
+  config.action_cable.allowed_request_origins = [ 'http://172.104.144.98' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -93,7 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # SMTP Settings
-  config.action_mailer.default_url_options = { host: 'http://172.104.143.116' }
+  config.action_mailer.default_url_options = { host: 'http://172.104.144.98' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -103,7 +102,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => 'smtp-relay.sendinblue.com',
     :port                 => 587,
-    :domain               => '172.104.143.116',
+    :domain               => '172.104.144.98',
     :user_name            => Rails.application.secrets.smtp_user,
     :password             => Rails.application.secrets.smtp_pass,
     :authentication       => 'login',
