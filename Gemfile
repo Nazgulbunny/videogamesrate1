@@ -41,6 +41,8 @@ gem 'figaro'
 gem 'ratyrate'
 gem 'redis-rails'
 
+gem 'contact_us', '~> 1.0.1'
+
 # Might not be needed
 gem 'erubis', '~> 2.7'
 

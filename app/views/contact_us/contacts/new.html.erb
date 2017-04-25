@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="well well-sm">
+          <%= form_for @contact, :url => contacts_path, :html => {:class => 'formtastic form-horizontal'} do |f| %>
+            <fieldset>
+              <legend class="text-center"><%= t('.contact_us') %></legend>
+
+              <!-- Name input-->
+              <div class="form-group">
+                <%= f.label :name, (t('.name') + content_tag(:abbr, '*', :class => 'required col-md-3 control-label')).html_safe %>
+                <div class="col-md-9">
+                  <%= f.text_field :name, :placeholder => "Your Name", :class => "form-control" %>
+                </div>
+              </div>
+
+              <!-- Email input-->
+              <div class="form-group">
+                <%= f.label :email, (t('.email') + content_tag(:abbr, '*', :class => 'required col-md-3 control-label')).html_safe %>
+                <div class="col-md-9">
+                  <%= f.text_field :email, :placeholder => "Your E-Mail Address", :class => "form-control" %>
+                  <% if f.object.errors[:email].present? %>
+                    <p class='inline-error'><%= f.object.errors[:email].join(' and ') %></p>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- Message body -->
+              <div class="form-group">
+                <%= f.label :message, (t('.message') + content_tag(:abbr, '*', :class => 'required col-md-3 control-label')).html_safe %>
+                <div class="col-md-9">
+                  <%= f.text_area :message, :placeholder => "Please enter your message here...", :rows => "5", :class => "form-control" %>
+                  <% if f.object.errors[:message].present? %>
+                    <p class='inline-error'><%= f.object.errors[:message].join(' and ') %></p>
+                  <% end %>
+                </div>
+              </div>
+
+              <!-- Form actions -->
+              <div class="form-group">
+                <div class="col-md-12 text-right">
+                  <%= f.submit :submit, :class => 'btn btn-primary btn-lg', :title => t('.submit') %>
+                </div>
+              </div>
+            </fieldset>
+          <% end %>
+        </div>
+      </div>
+	</div>
+</div>
