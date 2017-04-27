@@ -43,8 +43,8 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-  config.action_cable.url = 'ws://172.104.144.98/cable' # ws:// is non-secure, wss:// is secure
-  config.action_cable.allowed_request_origins = [ 'http://172.104.144.98' ]
+  config.action_cable.url = 'ws://videogamesrate.net/cable' # ws:// is non-secure, wss:// is secure
+  config.action_cable.allowed_request_origins = [ 'http://videogamesrate.net' ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -92,7 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # SMTP Settings
-  config.action_mailer.default_url_options = { host: 'http://172.104.144.98' }
+  config.action_mailer.default_url_options = { host: 'http://videogamesrate.net' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
