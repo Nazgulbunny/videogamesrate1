@@ -100,12 +100,12 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    :address              => 'smtp-relay.sendinblue.com',
-    :port                 => 587,
-    :domain               => '172.104.144.98',
+    :address              => 'smtpout.secureserver.net',
+    :port                 => 80,
+    :domain               => 'videogamesrate.net',
     :user_name            => Rails.application.secrets.smtp_user,
     :password             => Rails.application.secrets.smtp_pass,
-    :authentication       => 'login',
+    :authentication       => :plain,
     :enable_starttls_auto => true
   }
 
