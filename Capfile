@@ -11,6 +11,8 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/puma'
 require 'capistrano/rbenv'
+require 'capistrano/rails/console'
+
 install_plugin Capistrano::Puma # Fix "Don't know how to build task 'start'" error
 # Configure rbenv
 set :rbenv_type, :user
