@@ -13,7 +13,8 @@ default: &default
   password: password
 
 development:
-  url: <%= ENV["PGSQL_URL"] %>
+  <<: *default
+  database: vgr__development_db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
