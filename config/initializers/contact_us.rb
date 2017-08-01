@@ -1,5 +1,5 @@
 # Use this hook to configure contact mailer.
-# ContactUs.setup do |config|
+ContactUs.setup do |config|
 
   # ==> Mailer Configuration
 
@@ -28,4 +28,4 @@
   # Configure the redirect URL after a successful submission
   config.success_redirect = '/'
 
-# end
+end
