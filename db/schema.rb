@@ -15,73 +15,48 @@ ActiveRecord::Schema.define(version: 20170421164654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_admin_comments", id: :serial, force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_id", null: false
-    t.string "resource_type", null: false
-    t.integer "author_id"
-    t.string "author_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
-  end
-
-  create_table "activities", id: :serial, force: :cascade do |t|
-    t.integer "trackable_id"
+  create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
-    t.integer "owner_id"
+    t.bigint "trackable_id"
     t.string "owner_type"
+    t.bigint "owner_id"
     t.string "key"
     t.text "parameters"
-    t.integer "recipient_id"
     t.string "recipient_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
-  end
-
-  create_table "admin_users", id: :serial, force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
+    t.bigint "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+    t.index ["owner_type", "owner_id"], name: "index_activities_on_owner_type_and_owner_id"
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+    t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient_type_and_recipient_id"
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+    t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
   end
 
-  create_table "average_caches", id: :serial, force: :cascade do |t|
-    t.integer "rater_id"
-    t.integer "rateable_id"
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
     t.string "rateable_type"
+    t.bigint "rateable_id"
     t.float "avg", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
-  create_table "comments", id: :serial, force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.string "title", limit: 50, default: ""
     t.text "comment"
-    t.integer "commentable_id"
     t.string "commentable_type"
-    t.integer "user_id"
+    t.bigint "commentable_id"
+    t.bigint "user_id"
     t.string "role", default: "comments"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "comment_html"
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["commentable_type"], name: "index_comments_on_commentable_type"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -96,12 +71,12 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
-  create_table "events", id: :serial, force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "when"
-    t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "cached_votes_up", default: 0
     t.integer "comments_count", default: 0
     t.index ["cached_votes_up"], name: "index_events_on_cached_votes_up"
@@ -109,19 +84,21 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "follows", id: :serial, force: :cascade do |t|
-    t.integer "followable_id", null: false
-    t.string "followable_type", null: false
-    t.integer "follower_id", null: false
-    t.string "follower_type", null: false
+  create_table "follows", force: :cascade do |t|
+    t.string "followable_type"
+    t.bigint "followable_id", null: false
+    t.string "follower_type"
+    t.bigint "follower_id", null: false
     t.boolean "blocked", default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["followable_id", "followable_type"], name: "fk_followables"
+    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
+    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
   end
 
-  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -133,7 +110,7 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "games", id: :serial, force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.string "title"
     t.datetime "release_date"
     t.string "developer"
@@ -157,20 +134,21 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "overall_averages", id: :serial, force: :cascade do |t|
-    t.integer "rateable_id"
+  create_table "overall_averages", force: :cascade do |t|
     t.string "rateable_type"
+    t.bigint "rateable_id"
     t.float "overall_avg", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
   end
 
-  create_table "posts", id: :serial, force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.text "content", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "attachment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "cached_votes_up", default: 0
     t.integer "comments_count", default: 0
     t.text "content_html"
@@ -179,35 +157,37 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "rates", id: :serial, force: :cascade do |t|
-    t.integer "rater_id"
-    t.integer "rateable_id"
+  create_table "rates", force: :cascade do |t|
+    t.bigint "rater_id"
     t.string "rateable_type"
+    t.bigint "rateable_id"
     t.float "stars", null: false
     t.string "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
     t.index ["rater_id"], name: "index_rates_on_rater_id"
   end
 
-  create_table "rating_caches", id: :serial, force: :cascade do |t|
-    t.integer "cacheable_id"
+  create_table "rating_caches", force: :cascade do |t|
     t.string "cacheable_type"
+    t.bigint "cacheable_id"
     t.float "avg", null: false
     t.integer "qty", null: false
     t.string "dimension"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
-  create_table "reviews", id: :serial, force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "comment"
     t.string "video_review"
-    t.integer "user_id"
-    t.integer "game_id"
+    t.bigint "user_id"
+    t.bigint "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "comments_count", default: 0
@@ -216,7 +196,7 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -250,12 +230,12 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
-  create_table "videos", id: :serial, force: :cascade do |t|
+  create_table "videos", force: :cascade do |t|
     t.text "description"
     t.string "attachment"
-    t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "cached_votes_up", default: 0
     t.integer "comments_count", default: 0
     t.index ["cached_votes_up"], name: "index_videos_on_cached_votes_up"
@@ -263,18 +243,20 @@ ActiveRecord::Schema.define(version: 20170421164654) do
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
-  create_table "votes", id: :serial, force: :cascade do |t|
-    t.integer "votable_id"
+  create_table "votes", force: :cascade do |t|
     t.string "votable_type"
-    t.integer "voter_id"
+    t.bigint "votable_id"
     t.string "voter_type"
+    t.bigint "voter_id"
     t.boolean "vote_flag"
     t.string "vote_scope"
     t.integer "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
   add_foreign_key "messages", "conversations"
