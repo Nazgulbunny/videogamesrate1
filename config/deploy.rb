@@ -1,7 +1,7 @@
 # Change these
 server Figaro.env.PRODUCTION_SERVER_IP, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@bitbucket.org:JavaScriptTeddy/videogamesrate.git'
+set :repo_url,        'git@github.com:Nazgulbunny/videogamesrate1.git'
 set :application,     'videogamesrate'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
