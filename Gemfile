@@ -46,6 +46,9 @@ gem 'contact_us', '~> 1.0.1'
 # Might not be needed
 gem 'erubis', '~> 2.7'
 
+gem 'lograge'
+gem 'logstash-event'
+
 group :development do
   gem 'spring'
   gem 'better_errors'
