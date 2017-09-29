@@ -75,6 +75,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec', '~> 4.2.8'
+  gem 'rack-livereload'
 end
 
 group :production do

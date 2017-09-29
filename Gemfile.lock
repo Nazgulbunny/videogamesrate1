@@ -266,6 +266,8 @@ GEM
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.1)
+    rack-livereload (0.3.16)
+      rack
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -463,6 +465,7 @@ DEPENDENCIES
   pry-rails
   public_activity
   puma
+  rack-livereload
   rails (>= 5.0.0.rc2, < 5.1)
   rails_12factor
   rails_admin (~> 1.1.1)
