@@ -73,6 +73,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.8'
   gem 'guard'
+  gem 'guard-livereload'
   gem 'guard-rspec', '~> 4.2.8'
 end
 
