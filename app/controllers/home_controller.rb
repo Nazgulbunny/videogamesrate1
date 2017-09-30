@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   before_action :set_user, except: :front
+  layout :set_layout
   respond_to :html, :js
+
+  def about
+  end
 
   def index
     @post = Post.new
@@ -9,8 +13,7 @@ class HomeController < ApplicationController
   end
 
   def front
-    @videos= Video.order( "cached_votes_up DESC" ).limit(3).all
-    render :layout => false
+    @videos = Video.order( "cached_votes_up DESC" ).limit(3).all
   end
 
   def find_friends
@@ -20,11 +23,15 @@ class HomeController < ApplicationController
 
   def top_videos
     @videos = Video.order( "cached_votes_up DESC" )
-    render :layout => false
   end
 
-  private
+private
   def set_user
     @user = current_user
+  end
+
+  def set_layout
+    return "front" if action_name.in? ["front", "top_videos"]
+    return "application"
   end
 end

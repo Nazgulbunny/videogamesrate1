@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>VideoGamesRate</title>
+        <%= stylesheet_link_tag    'front/home' %>
+
+        <%= javascript_include_tag 'application' %>
+        <%= csrf_meta_tags %>
+        <meta name="propeller" content="1d4e426acd336c6c36dfd4eb3af8048b" />
+
+        <!-- Plyr Video Player -->
+        <link rel="stylesheet" href="https://cdn.plyr.io/2.0.12/plyr.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </head>
+    <body>
+        <script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1188501"></script>
+        <!-- Navigation -->
+        <%= render "shared/front_nav" %>
+
+        <header class="masthead">
+            <div class="overlay">
+                <div class="container">
+                    <% unless notice.blank? %>
+                        <div class="alert alert-info alert-dismissable alert-fixed">
+                            <%= notice %>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    <% end %>
+
+                    <% unless alert.blank? %>
+                        <div class="alert alert-danger alert-dismissable alert-fixed">
+                            <%= alert %>
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    <% end %>
+
+                    <h1 class="display-1 text-white">VideoGamesRate</h1>
+                    <h2 class="display-4 text-white"><%= content_for(:page_subtitle) %></h2>
+                </div>
+            </div>
+        </header>
+
+        <%= yield %>
+
+        <!-- Footer -->
+        <footer class="bg-inverse" id="main-footer">
+          <div class="container">
+            <ul class="nav navbar-nav">
+              <div class="row">
+                <div class="col-sm-6 col-md-6">
+                  <div class="footer-social-icons">
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/videogamesrate" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/VideoGamesRateA" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/videogamesrate/?hl=en" class="social-icon"> <i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.patreon.com/videogamesrate" class="social-icon"> <i class="fa fa-paypal"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <p class="m-0 text-center text-white">&copy; VideoGamesRate 2017</p>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </footer>
+
+        <!-- Plyr Video Player -->
+        <script src="https://cdn.plyr.io/2.0.12/plyr.js"></script>
+        <script>plyr.setup();</script>
+    </body>
+</html>

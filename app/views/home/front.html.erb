@@ -1,200 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <title>VideoGamesRate</title>
-      <%= stylesheet_link_tag    'front/home' %>
-      <%= stylesheet_link_tag    'front/bootstrap' %>
-      <%= javascript_include_tag 'application' %>
-      <%= csrf_meta_tags %>
-      <meta name="propeller" content="1d4e426acd336c6c36dfd4eb3af8048b" />
+<% content_for(:page_subtitle) do %>
+  will rock your socks off!
+<% end %>
 
-      <!-- Plyr Video Player -->
-      <link rel="stylesheet" href="https://cdn.plyr.io/2.0.12/plyr.css">
-
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    </head>
-    <body>
-      <script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1188501"></script>
-        <!-- Navigation -->
-        <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="container">
-                <a class="navbar-brand" href="<%= root_path %>">VideoGamesRate</a>
-                <div class="collapse navbar-collapse" id="navbarExample">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="<%= root_path %>">Home
-                              <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= top_videos_path %>">Top Videos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= about_path %>">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= contact_us_path %>">Contact</a>
-                        </li>
-
-                    </ul>
-
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <%= link_to 'Search', search_path, class: "nav-link" %>
-                      </li>
-                      <% if user_signed_in? %>
-                        <li class="nav-item">
-                          <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
-                        </li>
-                        <li class="nav-item">
-                          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"  %>
-                        </li>
-                      <% else %>
-                        <li class="nav-item">
-                          <%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %>
-                        </li>
-                        <li class="nav-item">
-                         <%= link_to 'Sign in', user_session_path, class: "nav-link" %>
-                       </li>
-                      <% end %>
-                    </ul>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 push-md-6">
+                <div class="p-5">
+                    <%= image_tag("esports.jpg", class: "img-fluid rounded-circle") %>
                 </div>
             </div>
-        </nav>
-
-        <header class="masthead">
-          <div class="overlay">
-            <div class="container">
-              <% unless notice.blank? %>
-                <div class="alert alert-info alert-dismissable alert-fixed">
-                  <%= notice %>
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                </div>
-              <% end %>
-              <% unless alert.blank? %>
-                <div class="alert alert-danger alert-dismissable alert-fixed">
-                  <%= alert %>
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                </div>
-              <% end %>
-              <h1 class="display-1 text-white">VideoGamesRate</h1>
-              <h2 class="display-4 text-white">Will Rock Your Socks Off</h2>
-            </div>
-          </div>
-        </header>
-
-        <section>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 push-md-6">
-                        <div class="p-5">
-                            <%= image_tag("esports.jpg", class: "img-fluid rounded-circle") %>
-                        </div>
-                    </div>
-                    <div class="col-md-6 pull-md-6">
-                        <div class="p-5">
-                            <h2 class="display-4">For the gamers...</h2>
-                              <p>
-                                We <b>LOVE</b> games and want to give a chance to every
-                                gamer out there, professional or not,
-                                to build an amazing community by posting gameplay
-                                videos, communicating with other players, s
-                                haring stories about the video games' world
-                                and everything around that with a focus on Esports games!
-                              </p>
-                        </div>
-                    </div>
+            <div class="col-md-6 pull-md-6">
+                <div class="p-5">
+                    <h2 class="display-4">For the gamers...</h2>
+                      <p>
+                        We <b>LOVE</b> games and want to give a chance to every
+                        gamer out there, professional or not,
+                        to build an amazing community by posting gameplay
+                        videos, communicating with other players, s
+                        haring stories about the video games' world
+                        and everything around that with a focus on Esports games!
+                      </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="p-5">
-                            <%= image_tag("esport2.jpg", class: "img-fluid rounded-circle") %>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-5">
-                            <h2 class="display-4">Ludituri te salutant!</h2>
-                            <p>
-                              Join a community of enthusiastic players. <br>
-                              Watch all the videos and comments! <br>
-                              Read about tactics and share your suggestions! <br>
-                              Write or post videos about the life of a gamer! <br>
-                              Write or make videos for reviewing a game! <br>
-                              Create teams for playing your favourite games! <br>
-                              Rate players and reviews! <br>
-                              Check out tournaments!
-                            </p>
-                        </div>
-                    </div>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="p-5">
+                    <%= image_tag("esport2.jpg", class: "img-fluid rounded-circle") %>
                 </div>
             </div>
-        </section>
-
-        <% if @videos.present? %>
-          <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="display-4">Weekly Top!</h2>
-                    <h6>
-                      <%= link_to "More Gameplay Videos", top_videos_path%>
-                    </h6>
+            <div class="col-md-6">
+                <div class="p-5">
+                    <h2 class="display-4">Ludituri te salutant!</h2>
+                    <p>
+                      Join a community of enthusiastic players. <br>
+                      Watch all the videos and comments! <br>
+                      Read about tactics and share your suggestions! <br>
+                      Write or post videos about the life of a gamer! <br>
+                      Write or make videos for reviewing a game! <br>
+                      Create teams for playing your favourite games! <br>
+                      Rate players and reviews! <br>
+                      Check out tournaments!
+                    </p>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
 
-            <div class="row text-center">
-              <% @videos.each do |video| %>
-                <div class="col-md-4 col-sm-4 hero-feature">
-                    <div class="thumbnail">
-                        <%= cl_video_tag(video.attachment.url, width: 800, height: 400, style: "display:block; max-width: 100%; height: 100%;") %>
-                        <div class="caption">
-                          <em>By: <%= video.user.username %></em>
-                          <p>
-                              <%= link_to "See More", video_path(video) %>
-                          </p>
-                        </div>
-                    </div>
+<% if @videos.present? %>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="display-4">Weekly Top!</h2>
+            <h6>
+              <%= link_to "More Gameplay Videos", top_videos_path%>
+            </h6>
+        </div>
+    </div>
+
+    <div class="row text-center">
+      <% @videos.each do |video| %>
+        <div class="col-md-4 col-sm-4 hero-feature">
+            <div class="thumbnail">
+                <%= cl_video_tag(video.attachment.url, width: 800, height: 400, style: "display:block; max-width: 100%; height: 100%;") %>
+                <div class="caption">
+                  <em>By: <%= video.user.username %></em>
+                  <p>
+                      <%= link_to "See More", video_path(video) %>
+                  </p>
                 </div>
-              <% end %>
             </div>
-          </div>
-        <% end %>
-
-        <!-- Footer -->
-        <footer class="py-5 bg-inverse" style="padding: 0 !important;">
-          <div class="container">
-            <ul class="nav navbar-nav">
-              <div class="row">
-                <div class="col-sm-6 col-md-6">
-                  <p class="m-0 text-center text-white" style="color: #fff">Copyright &copy; VideoGamesRate 2017</p>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                  <div class="footer-social-icons">
-                    <ul class="social-icons">
-                        <li><a href="https://www.facebook.com/videogamesrate" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/VideoGamesRateA" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://www.instagram.com/videogamesrate/?hl=en" class="social-icon"> <i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://www.patreon.com/videogamesrate" class="social-icon"> <i class="fa fa-paypal"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </ul>
-          </div>
-        </footer>
-
-
-        <!-- Plyr Video Player -->
-        <script src="https://cdn.plyr.io/2.0.12/plyr.js"></script>
-        <script>plyr.setup();</script>
-
-    </body>
-</html>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

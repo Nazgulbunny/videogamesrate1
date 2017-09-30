@@ -1,126 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      <title>VideoGamesRate | Top Videos</title>
-      <%= stylesheet_link_tag    'front/home' %>
-      <%= stylesheet_link_tag    'front/bootstrap' %>
-      <%= javascript_include_tag 'application' %>
-      <%= csrf_meta_tags %>
+<% content_for(:page_subtitle) do %>
+  Top Videos
+<% end %>
 
-      <!-- Plyr Video Player -->
-      <link rel="stylesheet" href="https://cdn.plyr.io/2.0.12/plyr.css">
-
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-      <script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=1188501"></script>
-
-        <!-- Navigation -->
-        <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="container">
-                <a class="navbar-brand" href="<%= root_path %>">VideoGamesRate</a>
-                <div class="collapse navbar-collapse" id="navbarExample">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= root_path %>">Home</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="<%= top_videos_path %>">Top Videos
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= about_path %>">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= contact_us_path %>">Contact</a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <%= link_to 'Search', search_path, class: "nav-link" %>
-                      </li>
-                      <% if user_signed_in? %>
-                        <li class="nav-item">
-                          <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
-                        </li>
-                        <li class="nav-item">
-                          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"  %>
-                        </li>
-                      <% else %>
-                        <li class="nav-item">
-                          <%= link_to 'Sign up', new_user_registration_path, class: "nav-link" %>
-                        </li>
-                        <li class="nav-item">
-                         <%= link_to 'Sign in', user_session_path, class: "nav-link" %>
-                       </li>
-                      <% end %>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <header class="masthead">
-          <div class="overlay">
-            <div class="container">
-              <% unless notice.blank? %>
-                <div class="alert alert-info alert-dismissable alert-fixed">
-                  <%= notice %>
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                </div>
-              <% end %>
-              <% unless alert.blank? %>
-                <div class="alert alert-danger alert-dismissable alert-fixed">
-                  <%= alert %>
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                </div>
-              <% end %>
-              <h1 class="display-1 text-white">VideoGamesRate</h1>
-              <h2 class="display-4 text-white">Top Videos</h2>
-            </div>
-          </div>
-        </header>
-
-        <br>
-        <br>
-
-        <section>
-          <div class="container">
-            <div class="row text-center">
-              <% if @videos.present? %>
-                <% @videos.each do |video| %>
-                  <div class="col-md-4 col-sm-4 hero-feature">
-                      <div class="thumbnail">
-                          <%= cl_video_tag(video.attachment.url, width: 800, height: 400, style: "display:block; max-width: 100%; height: 100%;") %>
-                          <div class="caption">
-                            <em>By: <%= video.user.username %></em>
-                            <p>
-                                <%= link_to "See More", video_path(video) %>
-                            </p>
-                          </div>
-                      </div>
+<section>
+  <div class="container">
+    <div class="row text-center">
+      <% if @videos.present? %>
+        <% @videos.each do |video| %>
+          <div class="col-md-4 col-sm-4 hero-feature">
+              <div class="thumbnail">
+                  <%= cl_video_tag(video.attachment.url, width: 800, height: 400, style: "display:block; max-width: 100%; height: 100%;") %>
+                  <div class="caption">
+                    <em>By: <%= video.user.username %></em>
+                    <p>
+                        <%= link_to "See More", video_path(video) %>
+                    </p>
                   </div>
-                <% end %>
-              <% end %>
-            </div>
+              </div>
           </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="py-5 bg-inverse">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; VideoGamesRate 2017</p>
-            </div>
-            <!-- /.container -->
-        </footer>
-
-        <!-- Plyr Video Player -->
-        <script src="https://cdn.plyr.io/2.0.12/plyr.js"></script>
-        <script>plyr.setup();</script>
-
-    </body>
-</html>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
