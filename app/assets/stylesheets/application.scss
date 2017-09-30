@@ -18,6 +18,11 @@
 @import "variables";
 @import "jquery.datetimepicker";
 @import "jquery.atwho";
+@import "*";
+
+.collapse.in {
+  display: block;
+}
 
 .messages-list {
   max-height: 200px;

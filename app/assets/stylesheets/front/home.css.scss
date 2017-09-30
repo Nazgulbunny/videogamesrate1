@@ -1,10 +1,50 @@
-body {
-    padding-top: 54px;
+@import './bootstrap';
+@import '../footer';
+@import '../variables';
+
+#user-home {
+  padding: 2rem 0;
+  margin: 0;
 }
 
-@media (min-width: 992px) {
+#user-info-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+img.avatar {
+    margin-bottom: 1rem;
+}
+
+.star-ratings img {
+    margin: 0;
+}
+
+.collapse.in {
+  display: block;
+}
+
+@media (max-width: $md-width - 1px) {
+    #main-nav .container {
+        margin-left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: $md-width) {
     body {
         padding-top: 56px;
+    }
+
+    #main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 100;
     }
 }
 
@@ -14,16 +54,18 @@ header.masthead {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
+    h1 {
+        overflow-wrap: break-word;
+    }
 }
 
 header.masthead > .overlay {
     padding: 5rem 0;
     text-align: center;
     background: rgba(0, 0, 0, 0.6);
-}
 
-@media (min-width: 992px) {
-    header.masthead > .overlay {
+    @media (min-width: $lg-width) {
         padding: 10rem 0;
     }
 }
@@ -41,8 +83,7 @@ img, .embed-responsive {
 }
 
 .footer-social-icons {
-    width: 350px;
-    display:block;
+    display: block;
     margin: 0 auto;
 }
 .social-icon {

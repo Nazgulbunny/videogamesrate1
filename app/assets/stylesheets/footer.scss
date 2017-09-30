@@ -1,0 +1,19 @@
+@import 'variables';
+
+#main-footer {
+    padding: 0.5rem;
+
+    .row {
+        flex-direction: row-reverse;
+    }
+
+    .row > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (max-width: $md-width - 1px) {
+            padding: 0.5rem 1rem;
+        }
+    }
+}
